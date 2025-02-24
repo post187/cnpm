@@ -39,7 +39,7 @@ public class SecurityConfig {
         httpSecurity.oauth2ResourceServer(oAuth2
                 -> oAuth2.jwt(jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder())
                 .jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                .authenticationEntryPoint()
+                .authenticationEntryPoint().
         );
 
 
