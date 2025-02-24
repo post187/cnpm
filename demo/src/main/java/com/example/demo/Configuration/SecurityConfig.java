@@ -15,7 +15,9 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 import javax.crypto.spec.SecretKeySpec;
 
@@ -39,7 +41,7 @@ public class SecurityConfig {
         httpSecurity.oauth2ResourceServer(oAuth2
                 -> oAuth2.jwt(jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder())
                 .jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                .authenticationEntryPoint().
+                .authenticationEntryPoint(new BasicAuthenticationEntryPoint())
         );
 
 
